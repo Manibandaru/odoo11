@@ -1,0 +1,242 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<odoo>-->
+<!--<data>-->
+<!--<template id="report_analytic_summary_id">-->
+<!--	<t t-call="web.html_container">-->
+<!--        <t t-set="data_report_margin_top" t-value="12"/>-->
+<!--        <t t-set="data_report_header_spacing" t-value="9"/>-->
+<!--        <t t-set="data_report_dpi" t-value="110"/>-->
+<!--        <t t-foreach="docs" t-as="o">-->
+
+
+<!--&lt;!&ndash;			<t t-name="web.external_layout_footer">&ndash;&gt;-->
+<!--&lt;!&ndash;					 <div class="footer">&ndash;&gt;-->
+<!--&lt;!&ndash;					    <div class="row" style="border-top: 1px solid black;">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;					 		<div align="left">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;					              Printed On: <span t-esc="get_time()" />&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;					        </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;					        <div align="center">&ndash;&gt;-->
+<!--&lt;!&ndash;					            <strong>Page:<span class="page"/>/<span class="topage"/></strong>&ndash;&gt;-->
+<!--&lt;!&ndash;					        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;					        <div align="right">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;					            <p t-esc="get_user()"/>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;					        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;					 	</div>&ndash;&gt;-->
+<!--&lt;!&ndash;					 </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;            <div class="page" >&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;				 <h2><strong><center><span t-esc="get_company()['name']"/></center></strong></h2>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;				<h3><strong><center><span />( <span t-esc="time.strftime('%d/%m/%Y', time.strptime(o.from_date, '%Y-%m-%d'))"/>-<span t-esc="time.strftime('%d/%m/%Y', time.strptime(o.to_date, '%Y-%m-%d'))"/> )</center></strong></h3>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                <h4><strong><center>ANALYTIC SUMMARY REPORT</center></strong></h4>&ndash;&gt;-->
+<!--&lt;!&ndash;                <table  class="table table-condensed" >&ndash;&gt;-->
+<!--&lt;!&ndash;	                	<thead  >&ndash;&gt;-->
+
+<!--&lt;!&ndash;		                    	<th style="border-top: 1px solid black;border-bottom: 1px solid black;background-color:#D3D3D3;" width="30%" align="left" >ANALYTIC ACCOUNT</th>&ndash;&gt;-->
+<!--&lt;!&ndash;		                        <th style="border-top: 1px solid black;border-bottom: 1px solid black;background-color:#D3D3D3;" width="10%" align="left">DESCRIPTION</th>&ndash;&gt;-->
+<!--&lt;!&ndash;		                        <th  style="border-top: 1px solid black;border-bottom: 1px solid black;background-color:#D3D3D3;" width="15%" align="left">PARTNER</th>&ndash;&gt;-->
+<!--&lt;!&ndash;			                    <th style="border-top: 1px solid black;border-bottom: 1px solid black;background-color:#D3D3D3;" width="10%" align="center">DATE</th>&ndash;&gt;-->
+<!--&lt;!&ndash;								<th style="border-top: 1px solid black;border-bottom: 1px solid black;background-color:#D3D3D3;" width="10%"  align="center">AMOUNT</th>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;	                	</thead>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <tr  t-foreach="get_data(o)" t-as="line">&ndash;&gt;-->
+<!--&lt;!&ndash;		                    	<td width="30%" class="text-right"><span t-esc="get_invoice_details(line).account_id.name" /></td>&ndash;&gt;-->
+<!--&lt;!&ndash;			                    <td width="10%" align="left"><span t-esc="get_invoice_details(line).name" /></td>&ndash;&gt;-->
+<!--&lt;!&ndash;		                        <td width="15%" align="left"><span t-esc="get_invoice_details(line).partner_id.name "/></td>&ndash;&gt;-->
+<!--&lt;!&ndash;		                    	<td width="10%" align="right"><span t-esc="(get_invoice_details(line).date) " /></td>&ndash;&gt;-->
+<!--&lt;!&ndash;								<td width="10%" align="right"><span  t-esc="(get_invoice_details(line).amount) "/></td>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;						</tr>&ndash;&gt;-->
+<!--&lt;!&ndash;						&lt;!&ndash;amount = 0&ndash;&gt;-->
+<!--&lt;!&ndash;                for journal_item in invoice.move_id.line_ids:&ndash;&gt;-->
+<!--&lt;!&ndash;                    amount += journal_item.debit &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    </tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;                </table>&ndash;&gt;-->
+<!--&lt;!&ndash;				<table width="100%" class="table table-condensed" style="border-top: 1px solid black;border-bottom: 1px solid black;">&ndash;&gt;-->
+<!--&lt;!&ndash;	                	<tr>&ndash;&gt;-->
+<!--&lt;!&ndash;		                    	<th width="30%" align="right" >TOTAL</th>&ndash;&gt;-->
+<!--&lt;!&ndash;		                        <th width="10%" align="left"></th>&ndash;&gt;-->
+<!--&lt;!&ndash;		                        <th width="15%" class="left"></th>&ndash;&gt;-->
+<!--&lt;!&ndash;			                    <th width="10%"  align="right"></th>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      	                        <th width="10%" align="right"><span t-esc="'{:,.2f}'.format(get_total_line(o)['amount'])"/></th>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;		                        <th width="10%" align="right"><span t-esc="'{:,.2f}'.format(get_total_line(o)['amount_curr'])"/></th>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;	                    	</tr>&ndash;&gt;-->
+<!--&lt;!&ndash;						</table>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </t>&ndash;&gt;-->
+<!--&lt;!&ndash;        </t>&ndash;&gt;-->
+<!--&lt;!&ndash;        </t>&ndash;&gt;-->
+
+
+<!--</template>-->
+
+
+
+<odoo>
+
+    <template id="report_analytic_summary_id">
+        <div class="header" style="border-bottom: 2px solid black">
+            <h3 class="text-center">Analytical Summary Report</h3>
+            <h4 class="text-center">
+<!--                <strong>From</strong>:-->
+<!--                <t t-esc="date_start"/>-->
+<!--                <strong>To</strong>:-->
+<!--                <t t-esc="date_end"/>-->
+            </h4>
+        </div>
+        <div class="article">
+            <table class="table table-condensed table-bordered" style="width: 100%">
+                <thead>
+                    <th class="text-center" style="width: 20%">Analytical Account</th>
+                    <th class="text-center" style="width: 20%">Description</th>
+                    <th class="text-center" style="width: 20%">Partner</th>
+					<th class="text-center" style="width: 20%">Date</th>
+                    <th class="text-center" style="width: 20%">Amount</th>
+                </thead>
+                <tbody>
+                    <t t-foreach="docs" t-as="doc">
+                        <tr>
+                            <td>
+                                <span t-esc="doc['analytic_account']"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-esc="doc['description']"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-esc="doc['partner']"/>
+                            </td>
+							<td class="text-center">
+                                <span t-esc="doc['date']"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-esc="doc['amount']"/>
+                            </td>
+                        </tr>
+                    </t>
+                    <t>
+                        <td>  </td>
+                        <td></td>
+                        <td class="text-center"> <strong><span>Total</span></strong>  </td>
+                        <td></td>
+                        <td class="text-center"><strong><span t-esc="sum1"/></strong></td>
+
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer">
+            <div class="row text-center" style="border-top: 1px solid black;">
+                <div class="col-xs-3 col-xs-offset-9 text-right">
+                    <ul class="list-inline" style="margin-top:10px;">
+                        <li>Page:</li>
+                        <li>
+                            <span class="page"/>
+                        </li>
+                        <li>/</li>
+                        <li>
+                            <span class="topage"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--	<template id="report_payment_summary_id">-->
+<!--	<t t-call="report.html_container">-->
+<!--        <t t-set="data_report_margin_top" t-value="12"/>-->
+<!--        <t t-set="data_report_header_spacing" t-value="9"/>-->
+<!--        <t t-set="data_report_dpi" t-value="110"/>-->
+<!--        <t t-foreach="docs" t-as="o">-->
+
+
+<!--			<t t-name="report.external_layout_footer">-->
+<!--					 <div class="footer">-->
+<!--					    <div class="row" style="border-top: 1px solid black;">-->
+<!--					 		<div align="left">-->
+<!--					              Printed On: <span t-esc="get_time()" />-->
+<!--					        </div>-->
+<!--					        <div align="center">-->
+<!--					            <strong>Page:<span class="page"/>/<span class="topage"/></strong>-->
+<!--					        </div>-->
+<!--					        <div align="right">-->
+<!--					            <p t-esc="get_user()"/>-->
+<!--					        </div>-->
+<!--					 	</div>-->
+<!--					 </div>-->
+
+
+<!--            <div class="page" >-->
+<!--				 <h2><strong><center><span t-esc="get_company()['name']"/></center></strong></h2>-->
+<!--				<h3><strong><center><span />( <span t-esc="time.strftime('%d/%m/%Y', time.strptime(o.from_date, '%Y-%m-%d'))"/>-<span t-esc="time.strftime('%d/%m/%Y', time.strptime(o.to_date, '%Y-%m-%d'))"/> )</center></strong></h3>-->
+<!--                <h4><strong><center>PAYMENT SUMMARY REPORT</center></strong></h4>-->
+<!--                <table  class="table table-condensed" >-->
+<!--	                	<thead  >-->
+
+<!--		                    	<th style="border-top: 1px solid black;border-bottom: 1px solid black;background-color:#D3D3D3;" width="20%" align="left" >CUSTOMER    </th>-->
+<!--		                        <th style="border-top: 1px solid black;border-bottom: 1px solid black;background-color:#D3D3D3;" width="12%" align="left">DATE    </th>-->
+<!--		                        <th  style="border-top: 1px solid black;border-bottom: 1px solid black;background-color:#D3D3D3;" width="20%" align="left">NUMBER   </th>-->
+<!--			                    <th style="border-top: 1px solid black;border-bottom: 1px solid black;background-color:#D3D3D3;" width="24%" align="center">NARRATION    </th>-->
+<!--								<th style="border-top: 1px solid black;border-bottom: 1px solid black;background-color:#D3D3D3;" width="12%"  align="center">TOTAL    </th>-->
+
+<!--		                        <th style="border-top: 1px solid black;border-bottom: 1px solid black;background-color:#D3D3D3;" width="12%" align="right">IN <span t-esc="get_company()['currency']" /> </th>-->
+
+
+<!--	                	</thead>-->
+<!--                    <tbody>-->
+<!--                        <tr  t-foreach="get_data(o)" t-as="line">-->
+<!--		                    	<td width="20%" class="text-right"><span t-esc="get_payment_details(line).partner_id.name" /></td>-->
+<!--			                    <td width="12%" align="left"><span t-esc="get_payment_details(line).payment_date" /></td>-->
+<!--		                        <td width="20%" align="left"><span t-esc="get_payment_details(line).name "/></td>-->
+<!--		                    	<td width="24%" align="left"><span t-esc="get_payment_details(line).communication " /></td>-->
+<!--								<td width="12%" align="right"><span t-esc="'{:,.2f}'.format(get_payment_details(line).amount)"/>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<span t-esc="get_payment_details(line).currency_id.name"/></td>-->
+<!--		                        <td width="12%" align="right"><span t-esc="'{:,.2f}'.format(get_amount_currency(line))"/></td>-->
+
+
+<!--						</tr>-->
+<!--						&lt;!&ndash;amount = 0-->
+<!--                for journal_item in invoice.move_id.line_ids:-->
+<!--                    amount += journal_item.debit &ndash;&gt;-->
+
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--				<table width="100%" class="table table-condensed" style="border-top: 1px solid black;border-bottom: 1px solid black;">-->
+<!--	                	<tr>-->
+<!--		                    	<th width="20%" align="right" >TOTAL</th>-->
+<!--		                        <th width="12%" align="left"></th>-->
+<!--		                        <th width="20%" class="left"></th>-->
+<!--			                    <th width="24%"  align="right"></th>-->
+<!--      	                        <th width="12%" align="right"><span t-esc="'{:,.2f}'.format(get_total_line(o)['amount'])"/></th>-->
+<!--		                        <th width="12%" align="right"><span t-esc="'{:,.2f}'.format(get_total_line(o)['amount_curr'])"/></th>-->
+
+<!--	                    	</tr>-->
+<!--						</table>-->
+
+<!--            </div>-->
+<!--            </t>-->
+<!--        </t>-->
+<!--        </t>-->
+
+
+<!--</template>-->
+<!--</data>-->
+<!--</odoo>-->

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+<report
+            string="Analytic Summary Report"
+            id="analytic_summary_report_id"
+            model="print.analytic.report"
+            report_type="qweb-pdf"
+            name="bt_invoice_summary.report_analytic_summary_id"
+            file="bt_invoice_summary.report_analytic_summary_id"
+            menu="True"
+        />
+
+
+    </data>
+</odoo>
