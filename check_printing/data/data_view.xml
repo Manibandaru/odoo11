@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data >
+
+<!--		<record id="UNB_Cheque" model="dynamic.cheque.format.configuration">-->
+<!--            <field name="name">UNION NATIONAL BANK</field>-->
+<!--            <field name="is_ac_pay">False</field>-->
+<!--            <field name="cheque_height">78.00</field>-->
+<!--            <field name="cheque_width">214.00</field>-->
+<!--            <field name="cheque_date_top_margin">17.00</field>-->
+<!--            <field name="cheque_date_left_margin">170.00</field>-->
+<!--            <field name="font_size_cheque_date">5.00</field>-->
+<!--            <field name="cheque_date_spacing">2.00</field>-->
+<!--            <field name="party_name_top_margin">32.00</field>-->
+<!--            <field name="party_name_left_margin">20.00</field>-->
+<!--            <field name="party_name_width_area">200.00</field>-->
+<!--            <field name="font_size_party_name">4.00</field>-->
+<!--            <field name="amt_figure_top_margin">42.00</field>-->
+<!--            <field name="amt_figure_left_margin">179.00</field>-->
+<!--            <field name="amt_figure_width_area">41.00</field>-->
+<!--            <field name="font_size_amt_figure">5.00</field>-->
+<!--            <field name="amt_word_first_line_top_margin">42.00</field>-->
+<!--            <field name="amt_word_first_line_left_margin">26.00</field>-->
+<!--            <field name="amt_first_word_width_area">200.00</field>-->
+<!--            <field name="first_line_words_count">75</field>-->
+<!--            <field name="amt_word_second_line_top_margin">36.00</field>-->
+<!--            <field name="amt_word_second_line_left_margin">15.00</field>-->
+<!--            <field name="amt_second_word_width_area">99.00</field>-->
+<!--            <field name="second_line_words_count">25</field>-->
+<!--            <field name="font_size_amt_word">4.00</field>-->
+<!--            <field name="amount_word_type">standard</field>-->
+<!--        </record>-->
+
+
+
+        <record id="RAK_Cheque1" model="dynamic.cheque.format.configuration">
+            <field name="name">RAK Bank</field>
+            <field name="is_ac_pay">False</field>
+            <field name="cheque_height">92.00</field>
+            <field name="cheque_width">214.00</field>
+            <field name="cheque_date_top_margin">20.00</field>
+            <field name="cheque_date_left_margin">150.00</field>
+            <field name="font_size_cheque_date">5.00</field>
+            <field name="cheque_date_spacing">2.00</field>
+            <field name="party_name_top_margin">39.00</field>
+            <field name="party_name_left_margin">31.00</field>
+            <field name="party_name_width_area">180.00</field>
+            <field name="font_size_party_name">4.00</field>
+            <field name="amt_figure_top_margin">58.00</field>
+            <field name="amt_figure_left_margin">161.00</field>
+            <field name="amt_figure_width_area">41.00</field>
+            <field name="font_size_amt_figure">5.00</field>
+            <field name="amt_word_first_line_top_margin">51.00</field>
+            <field name="amt_word_first_line_left_margin">25.00</field>
+            <field name="amt_first_word_width_area">150.00</field>
+            <field name="first_line_words_count">120</field>
+            <field name="amt_word_second_line_top_margin">48.00</field>
+            <field name="amt_word_second_line_left_margin">10.00</field>
+            <field name="amt_second_word_width_area">100.00</field>
+            <field name="second_line_words_count">100</field>
+            <field name="font_size_amt_word">4.00</field>
+            <field name="amount_word_type">standard</field>
+        </record>
+
+
+        <record id="NBD_Cheque" model="dynamic.cheque.format.configuration">
+            <field name="name">NBD Bank</field>
+            <field name="is_ac_pay">False</field>
+            <field name="cheque_height">92.00</field>
+            <field name="cheque_width">214.00</field>
+            <field name="cheque_date_top_margin">20.00</field>
+            <field name="cheque_date_left_margin">150.00</field>
+            <field name="font_size_cheque_date">5.00</field>
+            <field name="cheque_date_spacing">2.00</field>
+            <field name="party_name_top_margin">39.00</field>
+            <field name="party_name_left_margin">31.00</field>
+            <field name="party_name_width_area">180.00</field>
+            <field name="font_size_party_name">4.00</field>
+            <field name="amt_figure_top_margin">58.00</field>
+            <field name="amt_figure_left_margin">161.00</field>
+            <field name="amt_figure_width_area">41.00</field>
+            <field name="font_size_amt_figure">5.00</field>
+            <field name="amt_word_first_line_top_margin">51.00</field>
+            <field name="amt_word_first_line_left_margin">25.00</field>
+            <field name="amt_first_word_width_area">150.00</field>
+            <field name="first_line_words_count">120</field>
+            <field name="amt_word_second_line_top_margin">48.00</field>
+            <field name="amt_word_second_line_left_margin">10.00</field>
+            <field name="amt_second_word_width_area">100.00</field>
+            <field name="second_line_words_count">100</field>
+            <field name="font_size_amt_word">4.00</field>
+            <field name="amount_word_type">standard</field>
+        </record>
+
+	</data>
+</odoo>

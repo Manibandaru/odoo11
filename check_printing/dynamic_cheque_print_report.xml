@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+         <report
+            id="dynamic_cheque_print_report"
+            model="dynamic.cheque.print"
+            string="Print Cheque"
+            report_type="qweb-pdf"
+            name="check_printing.dynamic_cheque_print_template"
+            file="check_printing.dynamic_cheque_print_template"
+            menu="False"/>
+
+        <record id="cheque_format_dynamic_cheque_print" model="report.paperformat">
+           <field name="name">Dynamic Paper Format</field>
+           <field name="default" eval="True" />
+           <field name="format">custom</field>
+           <field name="page_height">76</field>
+           <field name="page_width">158</field>
+           <field name="orientation">Portrait</field>
+           <field name="margin_top">0</field>
+           <field name="margin_bottom">0</field>
+           <field name="margin_left">0</field>
+           <field name="margin_right">0</field>
+           <field name="header_line" eval="False" />
+           <field name="header_spacing">0</field>
+           <field name="dpi">80</field>
+           <field name="report_ids" eval="[(6,0,[ref('check_printing.dynamic_cheque_print_report')])]"/>
+       </record>
+
+    </data>
+</odoo>

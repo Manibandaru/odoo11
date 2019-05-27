@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="dynamic_cheque_print_template">
+            <t t-foreach="docs" t-as="doc_id">
+                <div class="article">
+                    <!-- Regular Report Printing -->
+                    <t t-if="not data.get('form').get('label_preview')">
+                        <t t-if="is_pay_acc(data)">
+                            <t t-set="style" t-value="draw_style(data['form'],'ac_pay')" />
+                            <span t-att-style="style">A/c Pay</span>
+                        </t>
+
+                        <t t-set="style" t-value="draw_style(data['form'], 'payee_name')" />
+                        <span t-att-style="style" t-field="doc_id.partner_id" />
+
+                        <t t-set="style" t-value="draw_style(data['form'], 'cheque_date')" />
+                        <div t-att-style="style">
+                            <span t-esc="get_date(doc_id.payment_date)" />
+                        </div>
+
+                        <t t-set="style" t-value="draw_style(data['form'], 'first_amt_words')" />
+                        <t t-if="get_word_line(data['form'], doc_id)">
+                            <span t-esc="get_word_line(data['form'], doc_id)[0]" t-att-style="style" />
+                        </t>
+
+                        <t t-set="style" t-value="draw_style(data['form'], 'second_amt_words')" />
+                        <t t-if="get_word_line(data['form'], doc_id) and len(get_word_line(data['form'], doc_id)) > 1">
+                            <span t-esc="get_word_line(data['form'], doc_id)[1]" t-att-style="style" />
+                        </t>
+
+                        <t t-set="style" t-value="draw_style(data['form'], 'amt_figure')" />
+                        <span t-att-style="style">
+                            <t t-if="get_currency_position(data['form']) == 'before'">
+                                <span t-if="doc_id.currency_id.symbol">
+                                    <span t-field="doc_id.currency_id.symbol" style="padding-left:5px;padding-right:5px;" class="pull-left"/>
+                                </span>
+                            </t>
+                            <span t-esc="get_amount(doc_id.amount, doc_id.currency_id)"/>
+                            <t t-if="get_currency_position(data['form']) == 'after'">
+                                <span t-if="doc_id.currency_id.symbol">
+                                    <span t-field="doc_id.currency_id.symbol" style="padding-left:5px;padding-right:5px;" class="pull-right"/>
+                                </span>
+                            </t>
+                        </span>
+
+                        <t t-set="style" t-value="draw_style(data['form'],'signatory_box')" />
+                        <div t-att-style="style"/>
+
+                        <t t-set="style" t-value="draw_style(data['form'],'company_name')" />
+                        <span t-esc="get_company(data)" t-att-style="style"/>
+
+                        <t t-set="style" t-value="draw_style(data['form'],'first_sign')" />
+                        <span t-esc="get_signatory_one(data)[0]" t-att-style="style"/>
+
+                        <t t-set="style" t-value="draw_style(data['form'],'second_sign')" />
+                        <span t-esc="get_signatory_one(data)[1]" t-att-style="style"/>
+
+                        <t t-set="style" t-value="draw_style(data['form'],'third_sign')" />
+                        <span t-esc="get_signatory_one(data)[2]" t-att-style="style"/>
+                    </t>
+
+                    <!-- Preview Label Report -->
+                    <t t-if="data.get('form').get('label_preview')">
+                        <t t-if="is_pay_acc(data.get('form'))">
+                            <t t-set="style" t-value="draw_style(data['form'],'ac_pay')" />
+                            <span t-att-style="style">A/c Pay</span>
+                        </t>
+
+                        <t t-set="style" t-value="draw_style(data['form'], 'payee_name')" />
+                        <span t-att-style="style" t-field="doc_id.supplier_id"/>
+
+                        <t t-set="style" t-value="draw_style(data['form'], 'cheque_date')" />
+                        <div t-att-style="style">
+                            <span t-field="doc_id.payment_date" />
+                        </div>
+
+                        <t t-set="style" t-value="draw_style(data['form'], 'first_amt_words')" />
+                        <t t-if="get_word_line(data['form'], doc_id)">
+                            <span t-esc="get_word_line(data['form'], doc_id)[0]" t-att-style="style" />
+                        </t>
+
+                        <t t-set="style" t-value="draw_style(data['form'], 'second_amt_words')" />
+                        <t t-if="get_word_line(data['form'], doc_id) and len(get_word_line(data['form'], doc_id)) > 1">
+                            <span t-esc="get_word_line(data['form'], doc_id)[1]" t-att-style="style" />
+                        </t>
+
+                        <t t-set="style" t-value="draw_style(data['form'], 'amt_figure')" />
+                        <span t-att-style="style">
+                            <t t-if="get_currency_position(data['form']) == 'before'">
+                                <span t-if="doc_id.currency_id.symbol">
+                                    <span t-field="doc_id.currency_id.symbol" style="padding-left:5px;padding-right:5px;" class="pull-left"/>
+                                </span>
+                            </t>
+                            <span t-esc="get_amount(doc_id.amount,doc_id.currency_id)"/><!-- In this line we add the currency argument in this function -->
+                            <t t-if="get_currency_position(data['form']) == 'after'">
+                                <span t-if="doc_id.currency_id.symbol">
+                                    <span t-field="doc_id.currency_id.symbol" style="padding-left:5px;padding-right:5px;" class="pull-right"/>
+                                </span>
+                            </t>
+                        </span>
+
+                        <t t-set="style" t-value="draw_style(data['form'],'signatory_box')" />
+                        <div t-att-style="style"/>
+
+                        <t t-set="style" t-value="draw_style(data['form'],'company_name')" />
+                        <span t-esc="get_company(data['form'])" t-att-style="style"/>
+
+                        <t t-set="style" t-value="draw_style(data['form'],'first_sign')" />
+                        <span t-esc="get_signatory_one(data['form'])[0]" t-att-style="style"/>
+
+                        <t t-set="style" t-value="draw_style(data['form'],'second_sign')" />
+                        <span t-esc="get_signatory_one(data['form'])[1]" t-att-style="style"/>
+
+                        <t t-set="style" t-value="draw_style(data['form'],'third_sign')" />
+                        <span t-esc="get_signatory_one(data['form'])[2]" t-att-style="style"/>
+
+                    </t>
+                </div>
+            </t>
+        </template>
+
+</odoo>
+
+

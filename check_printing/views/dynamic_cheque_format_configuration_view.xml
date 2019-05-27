@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="dynamic_cheque_format_configuration_tree_view" model="ir.ui.view">
+            <field name="name">Dynamic.Cheque.Format.Configuration.Tree</field>
+            <field name="model">dynamic.cheque.format.configuration</field>
+            <field name="arch" type="xml">
+                <tree string="Cheque Configuration">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="dynamic_cheque_format_configuration_form_view" model="ir.ui.view">
+            <field name="name">Dynamic.Cheque.Format.Configuration.Form</field>
+            <field name="model">dynamic.cheque.format.configuration</field>
+            <field name="arch" type="xml">
+                <form string="Cheque Configuration Form">
+                    <header>
+                        <button name="%(action_wizard_cheque_preview)d" string="Print Preview" type="action"
+                            class="oe_highlight" invisible="1"/>
+                    </header>
+                    <sheet>
+                        <h2>All parameters value consider into mm.</h2>
+                        <group>
+                            <field name="name" style="width:40%"/>
+                        </group>
+                        <group colspan="2" col="4">
+                            <group string="Cheque Dimension">
+                                <field name="cheque_height" />
+                                <field name="cheque_width" />
+                            </group>
+                            <group string="A/c Pay">
+                                <field name="is_ac_pay"/>
+                                <field name="ac_pay_top_margin" attrs="{'invisible': [('is_ac_pay', '=', False)]}"/>
+                                <field name="ac_pay_left_margin" attrs="{'invisible': [('is_ac_pay', '=', False)]}"/>
+                                <field name="font_size_ac_pay" attrs="{'invisible': [('is_ac_pay', '=', False)]}"/>
+                            </group>
+                            <group string="Cheque Date">
+                                <field name="cheque_date_top_margin" />
+                                <field name="cheque_date_left_margin" />
+                                <field name="font_size_cheque_date" />
+                                <field name="cheque_date_spacing" />
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Party's / Payee Name">
+                                <field name="party_name_top_margin" />
+                                <field name="party_name_left_margin" />
+                                <field name="party_name_width_area" />
+                                <field name="font_size_party_name" />
+                            </group>
+                            <group string="Amount in Figure">
+                                <field name="amt_figure_top_margin" />
+                                <field name="amt_figure_left_margin" />
+                                <field name="amt_figure_width_area" />
+                                <field name="font_size_amt_figure" />
+                                <field name="currency_symbol" />
+                                <field name="currency_symbol_position"
+                                        attrs="{'invisible':[('currency_symbol', '=', False)]}" />
+                            </group>
+                        </group>
+                        <group string="Amount in Words">
+                            <group>
+                                <field name="amt_word_first_line_top_margin" />
+                                <field name="amt_word_first_line_left_margin" />
+                                <field name="amt_first_word_width_area" />
+                                <field name="first_line_words_count"/>
+                                <field name="amount_word_type"/>
+                            </group>
+                            <group>
+                                <field name="amt_word_second_line_top_margin" />
+                                <field name="amt_word_second_line_left_margin" />
+                                <field name="amt_second_word_width_area" />
+                                <field name="second_line_words_count"/>
+                                <field name="font_size_amt_word" />
+                                <field name="currency_name" />
+                                <field name="currency_name_position"
+                                    attrs="{'invisible':[('currency_name', '=', False)]}" />
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Company Signatory">
+                                <field name="company_name" />
+                                <field name="font_size_company_name" attrs="{'invisible':[('company_name', '=', False)]}" />
+                                <field name="company_name_top_margin" attrs="{'invisible':[('company_name', '=', False)]}" />
+                                <field name="company_name_left_margin" attrs="{'invisible':[('company_name', '=', False)]}" />
+                            </group>
+                            <group string="Signatore Box">
+                                <field name="cmp_signatory_width" />
+                                <field name="cmp_signatory_height" />
+                                <field name="cmp_signatory_top_margin" />
+                                <field name="cmp_signatory_left_margin" />
+                            </group>
+                        </group>
+                        <group colspan="2" col="4">
+                            <group>
+                                <field name="first_signatory" />
+                                <field name="font_size_first_signatory" />
+                                <field name="first_signatory_top_margin" />
+                                <field name="first_signatory_left_margin" />
+                            </group>
+                            <group>
+                                <field name="second_signatory" />
+                                <field name="font_size_second_signatory" />
+                                <field name="second_signatory_top_margin" />
+                                <field name="second_signatory_left_margin" />
+                            </group>
+                            <group>
+                                <field name="third_signatory" />
+                                <field name="font_size_third_signatory" />
+                                <field name="third_signatory_top_margin" />
+                                <field name="third_signatory_left_margin" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_dynamic_cheque_format_configuration" model="ir.actions.act_window">
+            <field name="name">Cheques</field>
+            <field name="res_model">dynamic.cheque.format.configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menuitem_dynamic_cheque_format_configuration"
+            action="action_dynamic_cheque_format_configuration" parent="account.menu_finance_configuration" />
+
+    </data>
+</odoo>

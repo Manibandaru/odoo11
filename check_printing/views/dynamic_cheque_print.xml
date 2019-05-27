@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="wizard_dynamic_cheque_print_form">
+            <field name="name">wizard.dynamic.cheque.print.form</field>
+            <field name="model">wizard.dynamic.cheque.print</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="cheque_format_id" options="{'no_create': True}" required="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_call_report" string="Print" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_dynamic_cheque_print" model="ir.actions.act_window">
+            <field name="name">Print Cheque</field>
+            <field name="res_model">wizard.dynamic.cheque.print</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

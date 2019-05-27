@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="wizard_cheque_preview_form">
+            <field name="name">wizard.cheque.preview.form</field>
+            <field name="model">wizard.cheque.preview</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="supplier_id" style="width:40%"/>
+                            <field name="payment_date"/>
+                        </group>
+                        <group>
+                            <field name="amount"/>
+                            <field name="currency_id" style="width:40%"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="is_preview"/>
+                        <field name="image_preview" widget="image" attrs="{'invisible' : [('is_preview', '=', False)]}"/>
+                    </group>
+                    <footer>
+                        <button name="action_cheque_preview" string="Preview" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_wizard_cheque_preview" model="ir.actions.act_window">
+            <field name="name">Cheque Preview</field>
+            <field name="res_model">wizard.cheque.preview</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

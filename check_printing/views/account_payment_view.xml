@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_payment_form_inherit" model="ir.ui.view">
+            <field name="name">account.payment.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account_check_printing.view_account_payment_form_inherited"/>
+            <field name="arch" type="xml">
+                <button name="print_checks" position="replace">
+                    <button name="%(action_dynamic_cheque_print)d" class="oe_highlight" string="Print Cheque" type="action"
+                        attrs="{'invisible':[('partner_type', '=', 'customer')]}"/>
+                </button>
+            </field>
+        </record>
+
+    </data>
+</odoo>
