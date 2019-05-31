@@ -14,6 +14,8 @@
                                 <field name="wage"/>
                             <field name="hra_allowance" />
                             <field name="transport_alw"/>
+                                <field name="medical_allowance"/>
+                                <field name="food_allowance"/>
 
                             </group>
                         </xpath>

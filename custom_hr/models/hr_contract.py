@@ -9,4 +9,6 @@ class HrContract(models.Model):
 
     hra_allowance = fields.Float('HRA')
     transport_alw = fields.Float('Transport Allowance')
+    medical_allowance = fields.Float('Medical Allowance')
+    food_allowance = fields.Float('Food Allowance')
 
