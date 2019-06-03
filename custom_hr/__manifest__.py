@@ -12,7 +12,8 @@
     'depends': ['base', 'hr', 'hr_payroll'],
 
     'data': [
-            "views/hr_contract_view.xml"
+            "views/hr_contract_view.xml",
+        "views/hr_overtime_view.xml"
 
     ],
 

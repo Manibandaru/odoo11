@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="hr_overtime_form_view_custom">
+            <field name="name">Over Time Requests</field>
+            <field name="model">hr.overtime</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="approve_ot" type="object" string="Approve" class="oe_highlight" />
+                        <button name="reject_ot" type="object" string="Reject" />
+                        <field name="states"  widget="statusbar" statusbar_visible="draft,approved,rejected" nolabel="1" readonly="1"/>
+                    </header>
+                    <group>
+                        <field name="employee_id"/>
+                        <field name="start_time"/>
+                    </group>
+                    <group>
+                        <field name="end_time"/>
+                        <field name="total_hours" widget="float_time"/>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hr_overtime_tree_view_custom">
+            <field name="name">Over Time Requests</field>
+            <field name="model">hr.overtime</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="employee_id"/>
+                    <field name="total_hours"/>
+                    <field name="states"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_hr_overtime_form_view_custom" model="ir.actions.act_window">
+            <field name="name">HR Overtime</field>
+            <field name="res_model">hr.overtime</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+         <menuitem  id="menu_hr_overtime_form_view_custom" action="action_hr_overtime_form_view_custom"
+       	sequence="205" parent="hr_payroll.menu_hr_payroll_configuration" />
+
+
+
+
+
+        <record id="view_hr_contract_form_ot_custom" model="ir.ui.view">
+                    <field name="name">view.hr.contract.form.ot.custom</field>
+                    <field name="model">hr.contract</field>
+                    <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+                    <field name="arch" type="xml">
+                        <xpath expr="//field[@name='food_allowance']" position="after">
+                            <field name="hourly_charge"/>
+                        </xpath>
+                    </field>
+        </record>
+
+
+
+        <record id="view_hr_payslip_form_ot_custom" model="ir.ui.view">
+                    <field name="name">view.hr.payslip.form.custom</field>
+                    <field name="model">hr.payslip</field>
+                    <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+                    <field name="arch" type="xml">
+                        <xpath expr="//field[@name='name']" position="after">
+                            <field name="total_ot_hours"/>
+                        </xpath>
+                    </field>
+        </record>
+
+    </data>
+</odoo>
