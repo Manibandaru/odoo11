@@ -8,18 +8,20 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="approve_ot" type="object" string="Approve" class="oe_highlight" />
-                        <button name="reject_ot" type="object" string="Reject" />
+                        <button name="approve_ot" type="object" string="Approve" class="oe_highlight" attrs="{'invisible':[('states','=','approved')]}" />
+                        <button name="reject_ot" type="object" string="Reject" attrs="{'invisible':[('states','!=','draft')]}" />
                         <field name="states"  widget="statusbar" statusbar_visible="draft,approved,rejected" nolabel="1" readonly="1"/>
                     </header>
-                    <group>
+                    <sheet>
+                    <group colspan="4">
                         <field name="employee_id"/>
                         <field name="start_time"/>
                     </group>
-                    <group>
+                    <group colspan="4">
                         <field name="end_time"/>
                         <field name="total_hours" widget="float_time"/>
                     </group>
+                    </sheet>
 
                 </form>
             </field>
@@ -47,7 +49,7 @@
         </record>
 
          <menuitem  id="menu_hr_overtime_form_view_custom" action="action_hr_overtime_form_view_custom"
-       	sequence="205" parent="hr_payroll.menu_hr_payroll_configuration" />
+       	sequence="25" parent="hr_payroll.menu_hr_payroll_root" />
 
 
 
