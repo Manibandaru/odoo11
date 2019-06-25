@@ -4,13 +4,13 @@
         <xpath expr="//div[hasclass('panel-heading')]"
             position="replace" />
         
-        <xpath expr="//div[@id='appDrawerAppPanelBody']" position="after">
-                <div class="panel-footer" id="appDrawerAppPanelFooter">
-                    <div class="oe_logo">
-                        <img src="/web/binary/company_logo" />
-                    </div>
-                </div>
-        </xpath>
+<!--        <xpath expr="//div[@id='appDrawerAppPanelBody']" position="after">-->
+<!--                <div class="panel-footer" id="appDrawerAppPanelFooter">-->
+<!--                    <div class="oe_logo">-->
+<!--                        <img src="/web/binary/company_logo" />-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--        </xpath>-->
     </template>
 
     <template id="webclient_bootstrap"
