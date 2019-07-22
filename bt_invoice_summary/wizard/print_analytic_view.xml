@@ -42,6 +42,6 @@
         </record>
 
        <menuitem  id="menu_print_analytic_summary_report" action="action_print_analytic_summary"
-       	 parent="account.menu_finance_legal_statement" />
+       	 parent="partner_ageing_billwise_xlsx.excel_reports_menu" sequence="250"/>
 
 </odoo>

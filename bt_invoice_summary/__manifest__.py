@@ -30,7 +30,7 @@
 """,
     'author' : 'Mani Shankar',
     'website' : 'http://www.sidmectech.com',
-    'depends': ['account_invoicing'],
+    'depends': ['account_invoicing','partner_ageing_billwise_xlsx'],
     'images': ['static/description/banner.jpg'],
     'data': [
         'wizard/print_invoice_summary_view.xml',

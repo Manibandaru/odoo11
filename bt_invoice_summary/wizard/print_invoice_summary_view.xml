@@ -40,6 +40,6 @@
         </record>
         
        <menuitem  id="menu_print_invoice_summary_report" action="action_print_invoice_summary"
-       	sequence="205" parent="account.menu_finance_legal_statement" />
+       	sequence="205" parent="partner_ageing_billwise_xlsx.excel_reports_menu" />
         
 </odoo>
