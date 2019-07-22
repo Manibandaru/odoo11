@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
 # Copyright 2015 ACSONE SA/NV (<http://acsone.eu>)
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from io import BytesIO
+from cStringIO import StringIO
 
-from odoo import models
+from odoo.report.report_sxw import report_sxw
+from odoo.api import Environment
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -14,45 +16,32 @@ except ImportError:
     _logger.debug('Can not import xlsxwriter`.')
 
 
-class ReportXlsxAbstract(models.AbstractModel):
-    _name = 'report.report_xlsx.abstract'
+class ReportXlsx(report_sxw):
 
-    def _get_objs_for_report(self, docids, data):
-        """
-        Returns objects for xlx report.  From WebUI these
-        are either as docids taken from context.active_ids or
-        in the case of wizard are in data.  Manual calls may rely
-        on regular context, setting docids, or setting data.
+    def create(self, cr, uid, ids, data, context=None):
+        self.env = Environment(cr, uid, context)
+        report_obj = self.env['ir.actions.report.xml']
+        report = report_obj.search([('report_name', '=', self.name[7:])])
+        if report.ids:
+            self.title = report.name
+            if report.report_type == 'xlsx':
+                return self.create_xlsx_report(ids, data, report)
+        return super(ReportXlsx, self).create(cr, uid, ids, data, context)
 
-        :param docids: list of integers, typically provided by
-            qwebactionmanager for regular Models.
-        :param data: dictionary of data, if present typically provided
-            by qwebactionmanager for TransientModels.
-        :param ids: list of integers, provided by overrides.
-        :return: recordset of active model for ids.
-        """
-        if docids:
-            ids = docids
-        elif data and 'context' in data:
-            ids = data["context"].get('active_ids', [])
-        else:
-            ids = self.env.context.get('active_ids', [])
-        return self.env[self.env.context.get('active_model')].browse(ids)
-
-    def create_xlsx_report(self, docids, data):
-        objs = self._get_objs_for_report(docids, data)
-        file_data = BytesIO()
+    def create_xlsx_report(self, ids, data, report):
+        self.parser_instance = self.parser(
+            self.env.cr, self.env.uid, self.name2, self.env.context)
+        objs = self.getObjects(
+            self.env.cr, self.env.uid, ids, self.env.context)
+        self.parser_instance.set_context(objs, data, ids, 'xlsx')
+        file_data = StringIO()
         workbook = xlsxwriter.Workbook(file_data, self.get_workbook_options())
         self.generate_xlsx_report(workbook, data, objs)
         workbook.close()
         file_data.seek(0)
-        return file_data.read(), 'xlsx'
+        return (file_data.read(), 'xlsx')
 
     def get_workbook_options(self):
-        """
-        See https://xlsxwriter.readthedocs.io/workbook.html constructor options
-        :return: A dictionary of options
-        """
         return {}
 
     def generate_xlsx_report(self, workbook, data, objs):
