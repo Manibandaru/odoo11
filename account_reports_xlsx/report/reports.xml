@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+         <report
+            id="partner_ledger_xlsx"
+            model="account.report.partner.ledger"
+            string="Partner Ledger"
+            print_report_name = "Partner Ledger"
+            report_type="xlsx"
+            name="account_reports_xlsx.partner_ledger_report_xls"
+            file="account_reports_xlsx.partner_ledger_report_xls"
+            attachment_use="False"
+        />
+        <report
+            id="aged_partner_xlsx"
+            model="account.aged.trial.balance"
+            string="Aged Partner Report"
+            print_report_name = "Aged Partner Report"
+            report_type="xlsx"
+            name="account_reports_xlsx.aged_partner_report_xls"
+            file="account_reports_xlsx.aged_partner_report_xls"
+            menu="False"
+        />
+
+        <report
+            id="aged_currency_xlsx"
+            model="account.aged.trial.balance"
+            string="Aged Partner Report"
+            print_report_name = "Aged Partner Report"
+            report_type="xlsx"
+            name="account_reports_xlsx.aged_currency_report_xls"
+            file="account_reports_xlsx.aged_currency_report_xls"
+            menu="False"
+        />
+
+    </data>
+</odoo>
