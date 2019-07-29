@@ -7,7 +7,7 @@
     'author': 'Florent de Labarre',
     'summary': 'Standard Accounting Report',
     'website': 'https://github.com/fmdl',
-    'depends': ['account', 'report_xlsx'],
+    'depends': ['account', 'report_xlsx','account_reports_xlsx'],
     'data': [
         'data/report_paperformat.xml',
         'data/data_account_standard_report.xml',
