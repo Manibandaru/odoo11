@@ -12,6 +12,6 @@ __pycache__/
 *.egg-info
 # emacs backup files*.pyc
 *.pyc
-*.cpython-36.pyc
-*.cpython
+*.cpython[-36.pyc]
+*.cpython[]
 __pycache
