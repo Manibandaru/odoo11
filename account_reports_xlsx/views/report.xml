@@ -20,8 +20,8 @@
 
         <menuitem id="account.account_reports_management_menu" name="Management" parent="account.menu_finance_reports" sequence="4"/>
                     <menuitem name="Invoices" action="account.action_account_invoice_report_all" id="account.menu_action_account_invoice_report_all" parent="account.account_reports_management_menu" sequence="18"/>
-                    <menuitem name="Analytic Entries" parent="account.account_reports_management_menu" action="analytic.account_analytic_line_action_entries" id="account.menu_action_analytic_lines_tree" sequence="35" groups="analytic.group_analytic_accounting"/>
-                    <menuitem parent="account.account_reports_management_menu" id="account_budget.menu_act_crossovered_budget_view" name="Budgets" action="account_budget.act_crossovered_budget_view" sequence="60" groups="account.group_account_user"/>
+<!--                    <menuitem name="Analytic Entries" parent="account.account_reports_management_menu" action="analytic.account_analytic_line_action_entries" id="account.menu_action_analytic_lines_tree" sequence="35" groups="analytic.group_analytic_accounting"/>-->
+<!--                    <menuitem parent="account.account_reports_management_menu" id="account_budget.menu_act_crossovered_budget_view" name="Budgets" action="account_budget.act_crossovered_budget_view" sequence="60" groups="account.group_account_user"/>-->
                     <menuitem action="product_margin.product_margin_act_window" id="product_margin.menu_action_product_margin" name="Product Margins" sequence="20" parent="account.account_reports_management_menu"/>
                     <menuitem name="Assets" action="account_asset.action_asset_asset_report" id="account_asset.menu_action_asset_asset_report" parent="account.account_reports_management_menu" sequence="21"/>
 
