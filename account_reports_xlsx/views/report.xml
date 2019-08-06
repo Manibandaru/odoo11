@@ -12,6 +12,7 @@
             id="action_account_partner_ledger_report_filter"
             context="{'default_partner_ids':active_ids}"
         />
+        <menuitem id="account.menu_finance_entries" name="Accounting" parent="account.menu_finance" sequence="4" groups="account.group_account_user"/>
 
 
         <menuitem id="account.menu_finance_reports" name="Reporting" parent="account.menu_finance" sequence="5" groups="account.group_account_manager"/>
