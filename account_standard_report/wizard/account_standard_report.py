@@ -155,7 +155,7 @@ class AccountStandardLedger(models.TransientModel):
         return False
 
     name = fields.Char(default='Standard Report')
-    type_ledger = fields.Selection([('general', 'General Ledger'), ('partner', 'Partner Ledger'), ('journal', 'Journal Ledger'), ('open', 'Open Ledger'), ('aged', 'Aged Balance'), ('analytic', 'Analytic Ledger')], string='Type', default='general', required=True,
+    type_ledger = fields.Selection([('general', 'General Ledger'), ('partner', 'Partner Ledger'), ('journal', 'Journal Ledger'), ('aged', 'Aged Balance'), ('analytic', 'Analytic Ledger')], string='Type', default='general', required=True,
                                    help=' * General Ledger : Journal entries group by account\n'
                                    ' * Partner Leger : Journal entries group by partner, with only payable/recevable accounts\n'
                                    ' * Journal Ledger : Journal entries group by journal, without initial balance\n'
