@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_tax_uae">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <h3> Tax Report</h3>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <t t-if="data['date_from']"><strong>From</strong> <span t-esc="data['date_from']"/><br/></t>
+                            <t t-if="data['date_to']"><strong>to </strong><span t-esc="data['date_to']"/></t>
+                        </div>
+                    </div>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr class="text-center">
+                                <th></th>
+                                <th> Tax  </th>
+                                <th>Net</th>
+                                <th>Tax</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <th style="text-align: center">Sales</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr >
+                                <td> Dubai  </td>
+                                <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                        </tr>
+                        <tr t-foreach="lines['Dubai']" t-as="line">
+                            <td></td>
+                            <td><span t-esc="line.get('tax')"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('base')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('net')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        </tr>
+                       <tr >
+                                <td > Sharjah  </td>
+                           <td>   </td>
+                            <td>   </td>
+                           <td>   </td>
+                        </tr>
+                        <tr t-foreach="lines['sharjah']" t-as="line">
+                            <td></td>
+                            <td><span t-esc="line.get('tax')"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('base')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('net')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        </tr>
+
+                        <tr >
+                                <td> Abu Dhabi  </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                        </tr>
+
+                         <tr t-foreach="lines['abd']" t-as="line">
+                            <td></td>
+                             <td><span t-esc="line.get('tax')"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('base')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('net')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        </tr>
+                        <tr>
+                                <td> Fujairah  </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                        </tr>
+                         <tr t-foreach="lines['fuj']" t-as="line">
+                            <td></td>
+                             <td><span t-esc="line.get('tax')"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('base')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('net')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        </tr>
+                        <tr >
+                                <td> Ajman  </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                        </tr>
+
+                         <tr t-foreach="lines['ajman']" t-as="line">
+                            <td></td>
+                             <td><span t-esc="line.get('tax')"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('base')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('net')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        </tr>
+                        <tr>
+                                <td> Ras al-Khaimah  </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                        </tr>
+
+                         <tr t-foreach="lines['rak']" t-as="line">
+                            <td></td>
+                             <td><span t-esc="line.get('tax')"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('base')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('net')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        </tr>
+                        <tr >
+                                <td> Umm al-Quwain  </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                        </tr>
+                         <tr t-foreach="lines['umq']" t-as="line">
+                            <td></td>
+                             <td><span t-esc="line.get('tax')"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('base')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('net')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        </tr>
+                        <tr >
+                                <td> Other  </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                        </tr>
+                        <tr t-foreach="lines['others']" t-as="line">
+                            <td></td>
+                            <td><span t-esc="line.get('tax')"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('base')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('net')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        </tr>
+
+                        <tr>
+                            <th style="text-align: center">Purchase</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+
+                        <tr >
+                                <td> Purchases  </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                        </tr>
+                        <tr t-foreach="lines['purchase']" t-as="line">
+                            <td></td>
+                            <td><span t-esc="line.get('tax')"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('base')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                            <td><span t-att-style="style" t-esc="line.get('net')" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                        </tr>
+
+
+
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

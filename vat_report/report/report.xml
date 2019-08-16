@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+
+
+<!--        <report-->
+<!--            id="action_report_account_tax"-->
+<!--            model="account.tax.report"-->
+<!--            string="Tax Report"-->
+<!--            report_type="qweb-pdf"-->
+<!--            name="account.report_tax"-->
+<!--            file="account.report_tax"-->
+<!--            />-->
+
+        <report
+            id="action_report_account_tax_uae"
+            model="account.tax.report.uae"
+            string="UAE Tax Report"
+            report_type="qweb-pdf"
+            name="vat_report.report_tax_uae"
+            file="vat_report.report_tax_uae"
+            />
+
+
+    </data>
+</odoo>
