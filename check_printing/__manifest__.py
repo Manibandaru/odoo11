@@ -12,7 +12,7 @@
     'depends': ['base', 'sale', 'account', 'account_check_printing'],
 
     'data': [
-
+		'security/ir.model.access.csv',
          'views/dynamic_cheque_preview.xml',
          'views/dynamic_cheque_format_configuration_view.xml',
          'views/dynamic_cheque_print.xml',
