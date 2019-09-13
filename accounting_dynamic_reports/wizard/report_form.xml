@@ -36,11 +36,11 @@
             <field name="target">new</field>
             <field name="view_id" ref="financial_report_wiz_modified" />
         </record>
-        <menuitem
-                name="Dynamic Financial Reports"
+           <menuitem
+                name="PL/Balance Sheet Report"
                 id="new_reports"
                 action="action_new_reports"
-                parent="account_dynamic_gl.menu_finance_legal_statement_dynamic"
+                parent="account_reports_xlsx.menu_a2nsoft_account_reports"
         />
     </data>
 </odoo>

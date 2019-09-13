@@ -10,7 +10,7 @@
     'website': "https://www.cybrosys.com",
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
-    'depends': ['account_invoicing','account_dynamic_gl'],
+    'depends': ['account_invoicing'],
     'data': [
         'views/templates.xml',
         'wizard/report_form.xml',
@@ -20,7 +20,7 @@
     'license': 'OPL-1',
     'price': 19,
     'currency': 'EUR',
-    'images': ['static/description/banner.gif'],
+
     'installable': True,
     'auto_install': False,
     'application': False,
