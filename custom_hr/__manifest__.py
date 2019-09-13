@@ -11,7 +11,7 @@
     'summary': 'This module is customisation of HR playroll',
     'depends': ['base', 'hr', 'hr_payroll'],
 
-    'data': [
+    'data': ['security/ir.model.access.csv',
             "views/hr_contract_view.xml",
         "views/hr_overtime_view.xml"
 
