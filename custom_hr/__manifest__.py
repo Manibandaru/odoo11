@@ -13,7 +13,8 @@
 
     'data': ['security/ir.model.access.csv',
             "views/hr_contract_view.xml",
-        "views/hr_overtime_view.xml"
+        "views/hr_overtime_view.xml",
+             "views/company_specific_view.xml"
 
     ],
 
