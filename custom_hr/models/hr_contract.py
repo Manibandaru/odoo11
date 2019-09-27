@@ -12,3 +12,14 @@ class HrContract(models.Model):
     medical_allowance = fields.Float('Medical Allowance')
     food_allowance = fields.Float('Food Allowance')
 
+
+class hr_payslip_run(models.Model):
+	_inherit = 'hr.payslip.run'
+
+	company_id = fields.Many2one('res.company',string='Company', default= lambda self:self.env.user.company_id.id)
+
+
+class hr_holidays(models.Model):
+	_inherit='hr.holidays'
+
+	company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.user.company_id.id)
