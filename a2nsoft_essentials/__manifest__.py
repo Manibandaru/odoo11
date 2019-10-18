@@ -12,7 +12,8 @@
     'depends': ['base', 'sale','account','purchase'],
 
     'data': [
-		'views/custom_sales_order.xml'
+		'views/custom_sales_order.xml',
+	    "views/purchase_order_report.xml"
 
 
     ],
