@@ -49,5 +49,12 @@
         <field name="domain_force">[('company_id','=',[user.company_id.id])]</field>
     </record>
 
+       <record id="employee_model_employee_leaves" model="ir.rule">
+        <field name="name">Other Company ristriction</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('id','=',[user.company_id.id])]</field>
+    </record>
+
 </data>
 </odoo>
