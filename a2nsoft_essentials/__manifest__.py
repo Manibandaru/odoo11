@@ -13,7 +13,7 @@
 
     'data': [
 		'views/custom_sales_order.xml',
-	    "views/purchase_order_report.xml"
+	   # "views/purchase_order_report.xml"
 
 
     ],
