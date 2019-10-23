@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_client_documents_root" name="Typing Center" sequence="1" web_icon="employee_documents_expiry,static/src/img/Favicon.png"/>
+
+
+
+
+
+    <menuitem id="menu_client_documents_root_inner_menu" name="Documents Manager" parent="menu_client_documents_root"
+        sequence="100" />
+
+    <menuitem id="menu_client_documents_manager" name="Contact Documents" parent="menu_client_documents_root_inner_menu" action="action_client_document_manager"
+        sequence="105" />
+     <menuitem id="menu_employee_documents_manager" name="Employee Documents" parent="menu_client_documents_root_inner_menu" action="action_employee_document_manager"
+        sequence="106" />
+
+
+
+
+
+    <menuitem id="menu_client_documents_expiry_docs_menu" name="Expiring Documents" parent="menu_client_documents_root"
+        sequence="105" />
+    <menuitem id="menu_client_documents_expiry" name="Client Expiring Documents" parent="menu_client_documents_expiry_docs_menu" action="action_client_document_expiry"
+        sequence="205" />
+     <menuitem id="menu_employee_documents_expiry" name="Employee Expiring Documents" parent="menu_client_documents_expiry_docs_menu" action="action_employee_document_expiry"
+        sequence="206" />
+
+
+</odoo>

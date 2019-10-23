@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model='ir.ui.view' id='contact_document_manager_form_view'>
+        <field name="name">contact.document.manager.view</field>
+        <field name="model">contact.document</field>
+        <field name="arch" type="xml">
+            <form string="Contact Document Manager">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="document_name"/>
+                            <field name="issue_date"/>
+                            <field name="doc_attachment_id" widget="many2many_binary" class="oe_inline"/>
+                         </group>
+                        <group>
+                            <field name="document_holder"/>
+                            <field name="company_name" domain="[('is_company','=','True')]"/>
+                            <field name="expiry_date"/>
+                            <field name="days_expire" invisible="1"/>
+                            <field name="notify" invisible="1"/>
+                        </group>
+
+
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model='ir.ui.view' id='contact_document_manager_tree_view'>
+        <field name="name">contact.document.manager.tree.view</field>
+        <field name="model">contact.document</field>
+        <field name="arch" type="xml">
+            <tree create="true">
+                <field name="name"/>
+                <field name="document_name"/>
+                <field name="description"/>
+                <field name="expiry_date"/>
+                <field name="doc_attachment_id"/>
+                <field name="issue_date"/>
+                <field name="document_holder"/>
+                <field name="company_name" domain="[('is_company','=','True')]"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="contact_document_manager_search_view" model="ir.ui.view">
+        <field name="name">contact.document.manager.search.view</field>
+        <field name="model">contact.document</field>
+        <field name="arch" type="xml" >
+            <search string="Customer Documents">
+                <field name="name"/>
+                <field name="document_name"/>
+                <field name="description"/>
+                <field name="expiry_date"/>
+                <field name="doc_attachment_id"/>
+                <field name="issue_date"/>
+                <field name="document_holder"/>
+                <field name="company_name" />
+            </search>
+        </field>
+    </record>
+
+
+
+     <record model="ir.ui.view" id="res_partner_document_inherit_form_view">
+        <field name="name">res.partner.document.inherit.form.view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <div class="oe_button_box" position="inside">
+                <button class="oe_stat_button" name="document_view" type="object" icon="fa-list-ol">
+                    <field string="Documents" name="document_count" widget="statinfo"/>
+                </button>
+            </div>
+        </field>
+    </record>
+
+        <record id="action_client_document_manager" model="ir.actions.act_window">
+            <field name="name">Client Documents</field>
+            <field name="res_model">contact.document</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">search,tree,form</field>
+            <field name="target">current</field>
+            <field name="view_id" ref="contact_document_manager_tree_view" />
+            <field name="search_view_id" ref="contact_document_manager_search_view"/>
+        </record>
+
+
+     <record id="action_client_document_expiry" model="ir.actions.act_window">
+            <field name="name">Client Expiring Documents</field>
+            <field name="res_model">contact.document</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">search,tree,form</field>
+            <field name="target">current</field>
+            <field name="view_id" ref="contact_document_manager_tree_view" />
+            <field name="search_view_id" ref="contact_document_manager_search_view"/>
+            <field name="domain">[('notify','=',True)]</field>
+        </record>
+
+
+
+        <record id="action_employee_document_manager" model="ir.actions.act_window">
+            <field name="name">Employee Documents</field>
+            <field name="res_model">hr.employee.document</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">search,tree,form</field>
+            <field name="target">current</field>
+            <field name="view_id" ref="employee_document_tree_view" />
+            <field name="search_view_id" ref="employee_document_manager_search_view"/>
+
+        </record>
+
+    <record id="action_employee_document_expiry" model="ir.actions.act_window">
+            <field name="name">Employee Expiry Documents</field>
+            <field name="res_model">hr.employee.document</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">search,tree,form</field>
+            <field name="target">current</field>
+            <field name="view_id" ref="employee_document_tree_view" />
+            <field name="search_view_id" ref="employee_document_manager_search_view"/>
+            <field name="domain">[('notify','=',True)]</field>
+        </record>
+
+</odoo>
