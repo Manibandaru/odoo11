@@ -32,8 +32,9 @@
 
     'depends': ['base', 'hr'],
     'data': [
+		'security/documents_security_view.xml',
         'security/ir.model.access.csv',
-	    'security/documents_security_view.xml',
+
         'views/employee_check_list_view.xml',
         'views/employee_document_view.xml',
 	    'views/contact_document_view.xml',
