@@ -5,15 +5,15 @@ access_hr_employee_checklist_user,employee.checklist.user,model_employee_checkli
 access_hr_employee_checklist_emp,employee.checklist.emp,model_employee_checklist,,1,1,1,1
 
 
-access_hr_employee_document_manager,hr.employee.document_manager,model_hr_employee_document,group_typing_center_user,1,1,1,0
-access_hr_employee_document_user,hr.employee.document_user,model_hr_employee_document,group_typing_center_manager,1,1,1,1
+access_hr_employee_document_manager,hr.employee.document_manager,model_hr_employee_document,employee_documents_expiry.group_typing_center_user,1,1,1,0
+access_hr_employee_document_user,hr.employee.document_user,model_hr_employee_document,employee_documents_expiry.group_typing_center_manager,1,1,1,1
 
 
 
 
 
-access_contact_document_user,access.contact.document.user,model_contact_document,group_typing_center_user,1,1,1,0
-access_contact_document_manager,access.contact.document.manager,model_contact_document,group_typing_center_manager,1,1,1,1
+access_contact_document_user,access.contact.document.user,model_contact_document,employee_documents_expiry.group_typing_center_user,1,1,1,0
+access_contact_document_manager,access.contact.document.manager,model_contact_document,employee_documents_expiry.group_typing_center_manager,1,1,1,1
 
 
 
