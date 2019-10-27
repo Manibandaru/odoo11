@@ -7,23 +7,23 @@
 
 
 
-    <menuitem id="menu_client_documents_root_inner_menu" name="Documents Manager" parent="menu_client_documents_root" groups="employee_documents_expiry.group_typing_center_user"
+    <menuitem id="menu_client_documents_root_inner_menu" name="Documents Manager" parent="menu_client_documents_root" groups="employee_documents_expiry.group_typing_center_user,employee_documents_expiry.group_typing_center_manager"
         sequence="100" />
 
-    <menuitem id="menu_client_documents_manager" name="Contact Documents" parent="menu_client_documents_root_inner_menu" action="action_client_document_manager" groups="employee_documents_expiry.group_typing_center_user"
+    <menuitem id="menu_client_documents_manager" name="Contact Documents" parent="menu_client_documents_root_inner_menu" action="action_client_document_manager" groups="employee_documents_expiry.group_typing_center_user,employee_documents_expiry.group_typing_center_manager"
         sequence="105" />
-     <menuitem id="menu_employee_documents_manager" name="Employee Documents" parent="menu_client_documents_root_inner_menu" action="action_employee_document_manager" groups="employee_documents_expiry.group_typing_center_user"
+     <menuitem id="menu_employee_documents_manager" name="Employee Documents" parent="menu_client_documents_root_inner_menu" action="action_employee_document_manager" groups="employee_documents_expiry.group_typing_center_user,employee_documents_expiry.group_typing_center_manager"
         sequence="106" />
 
 
 
 
 
-    <menuitem id="menu_client_documents_expiry_docs_menu" name="Expiring Documents" parent="menu_client_documents_root" groups="employee_documents_expiry.group_typing_center_user"
+    <menuitem id="menu_client_documents_expiry_docs_menu" name="Expiring Documents" parent="menu_client_documents_root" groups="employee_documents_expiry.group_typing_center_user,employee_documents_expiry.group_typing_center_manager"
         sequence="105" />
-    <menuitem id="menu_client_documents_expiry" name="Client Expiring Documents" parent="menu_client_documents_expiry_docs_menu" action="action_client_document_expiry" groups="employee_documents_expiry.group_typing_center_user"
+    <menuitem id="menu_client_documents_expiry" name="Client Expiring Documents" parent="menu_client_documents_expiry_docs_menu" action="action_client_document_expiry" groups="employee_documents_expiry.group_typing_center_user,employee_documents_expiry.group_typing_center_manager"
         sequence="205" />
-     <menuitem id="menu_employee_documents_expiry" name="Employee Expiring Documents" parent="menu_client_documents_expiry_docs_menu" action="action_employee_document_expiry" groups="employee_documents_expiry.group_typing_center_user"
+     <menuitem id="menu_employee_documents_expiry" name="Employee Expiring Documents" parent="menu_client_documents_expiry_docs_menu" action="action_employee_document_expiry" groups="employee_documents_expiry.group_typing_center_user,employee_documents_expiry.group_typing_center_manager"
         sequence="206" />
 
 

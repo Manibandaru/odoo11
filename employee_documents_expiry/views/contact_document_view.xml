@@ -46,6 +46,7 @@
                 <field name="issue_date"/>
                 <field name="document_holder"/>
                 <field name="company_name" domain="[('is_company','=','True')]"/>
+                <field name="notify" invisible="1"/>
             </tree>
         </field>
     </record>
@@ -76,7 +77,7 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <div class="oe_button_box" position="inside">
-                <button class="oe_stat_button" name="document_view" type="object" icon="fa-list-ol">
+                <button class="oe_stat_button" name="document_view" type="object" icon="fa-list-ol" groups="employee_documents_expiry.group_typing_center_user,employee_documents_expiry.group_typing_center_manager">
                     <field string="Documents" name="document_count" widget="statinfo"/>
                 </button>
             </div>
