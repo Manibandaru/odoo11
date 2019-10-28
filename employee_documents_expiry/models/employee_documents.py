@@ -27,6 +27,16 @@ class HrEmployeeDocument(models.Model):
                     }
                     self.env['mail.mail'].create(main_content).send()
 
+                    mail_content1 = "  Hello, Document " + i.name + " of one your employee (" + i.employee_ref.name + ")  " "is going to expire on " + \
+                                   str(i.expiry_date) + ". Please renew it before expiry date"
+                    main_content1 = {
+	                    'subject': _('Document-%s Expired On %s') % (i.name, i.expiry_date),
+	                    'author_id': self.env.user.partner_id.id,
+	                    'body_html': mail_content1,
+	                    'email_to': self.env.user.company_id.email,
+                    }
+                    self.env['mail.mail'].create(main_content1).send()
+
     @api.constrains('expiry_date')
     def check_expr_date(self):
         for each in self:

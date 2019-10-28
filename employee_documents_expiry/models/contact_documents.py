@@ -17,7 +17,7 @@ class contact_documents(models.Model):
 			if i.expiry_date:
 				exp_date = fields.Date.from_string(i.expiry_date) - timedelta(days=7)
 				if date_now >= exp_date:
-					mail_content = "  Hello, Your Client " + i.document_holder.name + " document  ,<br>Your Document " + i.name + "is going to expire on " + \
+					mail_content = "  Hello, Your Document  " + i.name + "is going to expire on " + \
 					               str(i.expiry_date) + ". Please renew it before expiry date"
 					main_content = {
 						'subject': _('Document-%s Expired On %s') % (i.name, i.expiry_date),
@@ -27,15 +27,15 @@ class contact_documents(models.Model):
 					}
 					self.env['mail.mail'].create(main_content).send()
 
-					# mail_content = "  Hello, Your Client " + i.document_holder.name + " document  ,<br>Your Document " + i.name + "is going to expire on " + \
-					#                str(i.expiry_date) + ". Please renew it before expiry date"
-					# main_content = {
-					# 	'subject': _('Document-%s Expired On %s') % (i.name, i.expiry_date),
-					# 	'author_id': self.env.user.partner_id.id,
-					# 	'body_html': mail_content,
-					# 	'email_to': self.env.user.partner_id.id,
-					# }
-					# self.env['mail.mail'].create(main_content).send()
+					mail_content1 = "  Hello,The Document with reference number " + i.name +  ", of  Your Client " + i.document_holder.name + "   is going to expire on " + \
+					               str(i.expiry_date) + ". Please renew it before expiry date"
+					main_content1 = {
+						'subject': _('Document-%s Expired On %s') % (i.name, i.expiry_date),
+						'author_id': self.env.user.partner_id.id,
+						'body_html': mail_content1,
+						'email_to': self.env.user.company_id.email,
+					}
+					self.env['mail.mail'].create(main_content1).send()
 
 	@api.constrains('expiry_date')
 	def check_expr_date(self):
