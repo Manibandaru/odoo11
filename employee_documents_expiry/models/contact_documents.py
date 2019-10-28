@@ -23,9 +23,19 @@ class contact_documents(models.Model):
 						'subject': _('Document-%s Expired On %s') % (i.name, i.expiry_date),
 						'author_id': self.env.user.partner_id.id,
 						'body_html': mail_content,
-						'email_to': self.env.user.partner_id.id ,
+						'email_to': i.document_holder.email ,
 					}
 					self.env['mail.mail'].create(main_content).send()
+
+					# mail_content = "  Hello, Your Client " + i.document_holder.name + " document  ,<br>Your Document " + i.name + "is going to expire on " + \
+					#                str(i.expiry_date) + ". Please renew it before expiry date"
+					# main_content = {
+					# 	'subject': _('Document-%s Expired On %s') % (i.name, i.expiry_date),
+					# 	'author_id': self.env.user.partner_id.id,
+					# 	'body_html': mail_content,
+					# 	'email_to': self.env.user.partner_id.id,
+					# }
+					# self.env['mail.mail'].create(main_content).send()
 
 	@api.constrains('expiry_date')
 	def check_expr_date(self):
