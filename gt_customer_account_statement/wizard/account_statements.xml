@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+    	<record id="view_account_statement" model="ir.ui.view">
+            <field name="name">Customer Account Statement</field>
+            <field name="model">account.statement.report</field>
+            <field name="arch" type="xml">
+                <form string="Account Statement">
+                   <sheet>
+                        <group col="4" colspan="4">
+                            <field name="company_id"  context="{'user_company':True}" />
+                          <!--   <field name="target_mv" widget="radio"/> -->
+                            <newline/>
+                            <separator string="Filter on Dates" col="4" colspan="4"/>
+                                <field name="period_from"/>
+                                <field name="period_to"/>
+                                <field name="ageing_length"/>
+                                
+                            <separator string="Select Customers" colspan="4"/>
+                                <field name="partner_ids" nolabel="1" colspan="4" domain="[('customer', '=', True)]"/>
+                           <!--  <separator string="Journal Type" colspan="4"/>
+                                <field name="journal_ids" nolabel="1" colspan="4" widget="many2many_tags"/> -->
+                        </group>
+                    </sheet>
+                    <footer>
+                        <span groups="base.group_user">
+                            
+                            <button name="print_report" string="Print" type="object" class="oe_highlight"/>
+                            <button special="cancel" string="Cancel" class="btn-default"/>
+                        </span>
+                    </footer>
+                </form>
+           </field>
+        </record>
+
+
+        <act_window id="view_customer_statement_form"
+                name="Print Customer/Supplier Statement"
+                res_model="account.statement.report"
+                src_model="res.partner"
+                view_mode="form"
+                view_type="form"
+                target="new"
+                key2="client_action_multi"
+                />
+
+
+
+    </data>
+</odoo>
