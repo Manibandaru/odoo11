@@ -74,8 +74,8 @@ class contact_documents(models.Model):
 
 	document_holder = fields.Many2one('res.partner', string='Document Holder')
 	company_name = fields.Many2one('res.partner',string='Company')
-	days_expire = fields.Integer(string='Days to Expire',compute='compute_expiry' ,store=True)
-	notify = fields.Boolean(string='Notify' , compute='compute_notify' ,default=False ,store=True)
+	days_expire = fields.Integer(string='Days to Expire',compute='compute_expiry' )
+	notify = fields.Boolean(string='Notify' , compute='compute_notify' ,default=False )
 
 
 
