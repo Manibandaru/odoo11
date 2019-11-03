@@ -72,7 +72,7 @@ class HrEmployeeDocument(models.Model):
                                          help='You can attach the copy of your document', copy=False)
     issue_date = fields.Date(string='Issue Date', default=fields.datetime.now(), copy=False)
     days_expire = fields.Integer(string='Days to Expire', compute='compute_expiry')
-    notify = fields.Boolean(string='Notify' , compute='compute_notify',store=True)
+    notify = fields.Boolean(string='Notify' , compute='compute_notify')
 
 
 class HrEmployee(models.Model):
