@@ -55,6 +55,8 @@ class contact_documents(models.Model):
 				record.days_expire = (exp_date-date_now).days
 				expire_days = (exp_date - date_now).days
 
+
+	@api.depends('days_expire')
 	@api.multi
 	def compute_notify(self):
 		for record in self:
@@ -75,7 +77,7 @@ class contact_documents(models.Model):
 	document_holder = fields.Many2one('res.partner', string='Document Holder')
 	company_name = fields.Many2one('res.partner',string='Company')
 	days_expire = fields.Integer(string='Days to Expire',compute='compute_expiry' )
-	notify = fields.Boolean(string='Notify' , compute='compute_notify' ,default=False )
+	notify = fields.Boolean(string='Notify' , compute='compute_notify' ,default=False ,store=True)
 
 
 

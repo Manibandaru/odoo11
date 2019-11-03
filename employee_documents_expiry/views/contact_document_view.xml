@@ -30,8 +30,8 @@
                             <field name="document_holder"/>
                             <field name="company_name" domain="[('is_company','=','True')]"/>
                             <field name="expiry_date"/>
-                            <field name="days_expire" invisible="1"/>
-                            <field name="notify" invisible="1"/>
+                            <field name="days_expire" invisible="0"/>
+                            <field name="notify" invisible="0"/>
                         </group>
 
 
