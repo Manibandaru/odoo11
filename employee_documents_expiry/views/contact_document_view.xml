@@ -30,6 +30,7 @@
                             <field name="document_holder"/>
                             <field name="company_name" domain="[('is_company','=','True')]"/>
                             <field name="expiry_date"/>
+                            <field name="company_id" invisible="1"/>
                             <field name="days_expire" invisible="0"/>
                             <field name="notify" invisible="0"/>
                         </group>
@@ -142,5 +143,13 @@
             <field name="search_view_id" ref="employee_document_manager_search_view"/>
             <field name="domain">[('notify','=',True)]</field>
         </record>
+
+
+    <record id="contacts_documents_ir_rule" model="ir.rule">
+        <field name="name">Documents ristriction</field>
+        <field name="model_id" ref="model_contact_document"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('id','=',[user.company_id.id])]</field>
+    </record>
 
 </odoo>
