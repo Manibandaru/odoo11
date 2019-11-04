@@ -17,6 +17,14 @@
             <field name="category_id" ref="employee_documents_expiry.module_client_documents"/>
         </record>
 
+         <record id="contacts_documents_ir_rule" model="ir.rule">
+        <field name="name">Documents ristriction</field>
+        <field name="model_id" ref="model_contact_document"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_id','=',[user.company_id.id])]</field>
+    </record>
+
+
 
     </data>
 </odoo>
