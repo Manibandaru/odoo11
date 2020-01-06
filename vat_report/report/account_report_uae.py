@@ -190,7 +190,7 @@ class ReportTaxUae(models.AbstractModel):
 	@api.model
 	def get_lines(self, options):
 		taxes = {}
-		for tax in self.env['account.tax'].search([('type_tax_use', '!=', 'none')]):
+		for tax in self.env['account.tax'].search([('type_tax_use', '!=', 'none'),('company_id','=',self.env.user.company_id.id)]):
 			if tax.children_tax_ids:
 				for child in tax.children_tax_ids:
 					if child.type_tax_use != 'none':
