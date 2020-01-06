@@ -15,6 +15,7 @@
         <record id ="group_typing_center_manager" model="res.groups">
             <field name="name">Manager</field>
             <field name="category_id" ref="employee_documents_expiry.module_client_documents"/>
+            <field name="implied_ids" eval="[(4, ref('group_typing_center_user'))]"/>
         </record>
 
          <record id="contacts_documents_ir_rule" model="ir.rule">
