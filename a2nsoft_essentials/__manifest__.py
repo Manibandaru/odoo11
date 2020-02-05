@@ -13,7 +13,9 @@
 
     'data': [
 		'views/custom_sales_order.xml',
-	   # "views/purchase_order_report.xml"
+	   # "views/purchase_order_report.xml",
+        'views/res_company_custom.xml',
+        'views/inventory_sales_order.xml'
 
 
     ],

@@ -832,7 +832,7 @@
                         </td>
                          <td class="text-right">
                             <span t-set="uom" t-value="line.product_uom.name"/>
-                            <span t-esc="line.product_uom.name[0:3]" groups="product.group_uom"/>
+                            <span t-esc="line.product_uom.name" groups="product.group_uom"/>
                         </td>
                         <td class="text-right">
                             <span t-field="line.price_unit"/>
@@ -935,7 +935,7 @@
                         </td>
                          <td class="text-right">
                             <span t-set="uom" t-value="order_line.product_uom.name"/>
-                            <span t-esc="uom[0:3]" groups="product.group_uom"/>
+                            <span t-esc="uom" groups="product.group_uom"/>
                         </td>
                     </tr>
                 </tbody>
@@ -1216,7 +1216,7 @@
                                         <span t-field="l.product_uom_qty"/>
                                     </td>
                                     <td class="text-right">
-                                        <span t-esc="l.product_uom.name[0:3]" groups="product.group_uom"/>
+                                        <span t-esc="l.product_uom.name" groups="product.group_uom"/>
                                     </td>
                                     <td class="text-right">
                                         <span t-field="l.price_unit"/>
@@ -1391,7 +1391,7 @@
 <!--                                    <span t-field="l.uom_id"  groups="product.group_uom"/>-->
                                 </td>
                                 <td class="text-right">
-                                    <span t-esc="l.uom_id.name[0:3]" groups="product.group_uom"/>
+                                    <span t-esc="l.uom_id.name" groups="product.group_uom"/>
                                 </td>
                                 <td class="text-right">
                                     <span t-field="l.price_unit"/>
