@@ -9,7 +9,7 @@
     'company': 'Cybrosys Techno Solutions',
     'website': "https://cybrosys.com/",
     'category': 'Accounting',
-    'depends': ['account', 'report_xlsx'],
+    'depends': ['account','product_margin', 'report_xlsx'],
     'data': [
         'views/financial_report_wizard_view.xml',
         'views/financial_report_xls_view.xml',
