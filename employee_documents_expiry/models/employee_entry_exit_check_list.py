@@ -26,5 +26,7 @@ class EmployeeEntryDocuments(models.Model):
                                       ('exit', 'Exit Process'),
                                       ('renew','Renew'),
                                       ('other', 'Other')], string='Checklist Type', required=0)
+    notify_days = fields.Integer(string='Expiry Notification')
+    company_id = fields.Many2one('res.company',string='Company' ,default=lambda self: self.env.user.company_id)
 
 

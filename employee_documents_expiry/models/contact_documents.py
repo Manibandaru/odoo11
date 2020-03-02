@@ -60,7 +60,7 @@ class contact_documents(models.Model):
 	@api.multi
 	def compute_notify(self):
 		for record in self:
-			if record.days_expire and record.days_expire <= 30 :
+			if record.days_expire and record.days_expire <= record.document_name.notify_days :
 				record.notify = True
 
 

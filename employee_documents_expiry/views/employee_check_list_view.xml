@@ -10,6 +10,8 @@
                     <group>
                         <field name="name"/>
                         <field name="document_type"/>
+                        <field name="notify_days"/>
+                        <field name="company_id"/>
                     </group>
                 </sheet>
                 <div class="oe_chatter">
@@ -27,6 +29,8 @@
             <tree>
                 <field name="name"/>
                 <field name="document_type"/>
+                <field name="notify_days"/>
+                <field name="company_id"/>
             </tree>
         </field>
     </record>
