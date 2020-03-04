@@ -67,7 +67,7 @@ class HrEmployeeDocument(models.Model):
     document_name = fields.Many2one('employee.checklist', string='Document', required=True)
     description = fields.Text(string='Description', copy=False)
     expiry_date = fields.Date(string='Expiry Date', copy=False)
-    employee_ref = fields.Many2one('hr.employee', invisible=1, copy=False)
+    employee_ref = fields.Many2one('hr.employee', invisible=0, copy=False)
     doc_attachment_id = fields.Many2many('ir.attachment', 'doc_attach_rel', 'doc_id', 'attach_id3', string="Attachment",
                                          help='You can attach the copy of your document', copy=False)
     issue_date = fields.Date(string='Issue Date', default=fields.datetime.now(), copy=False)
