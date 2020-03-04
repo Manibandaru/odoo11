@@ -78,7 +78,7 @@
         <field name="arch" type="xml">
             <div class="oe_button_box" position="inside">
                 <button class="oe_stat_button" name="document_view" type="object" icon="fa-list-ol" groups="employee_documents_expiry.group_typing_center_user,employee_documents_expiry.group_typing_center_manager">
-                    <field string="Documents" name="document_count" />
+                    <field string="Documents" name="document_count" widget="statinfo"/>
                 </button>
             </div>
         </field>
