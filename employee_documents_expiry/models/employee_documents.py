@@ -73,6 +73,7 @@ class HrEmployeeDocument(models.Model):
     issue_date = fields.Date(string='Issue Date', default=fields.datetime.now(), copy=False)
     days_expire = fields.Integer(string='Days to Expire', compute='compute_expiry')
     notify = fields.Boolean(string='Notify' , compute='compute_notify',store=True)
+    company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.user.company_id.id)
 
 
 class HrEmployee(models.Model):

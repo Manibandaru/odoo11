@@ -29,6 +29,7 @@
                             <field name="expiry_date"/>
                             <field name="days_expire" invisible="1"/>
                             <field name="notify" invisible="1"/>
+                            <field name="company_id"/>
                         </group>
                     </group>
                     <notebook>
