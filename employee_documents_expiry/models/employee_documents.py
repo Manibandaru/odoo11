@@ -105,7 +105,7 @@ class HrEmployee(models.Model):
             'context': "{'default_employee_ref': '%s'}" % self.id
         }
 
-    document_count = fields.Integer(compute='_document_count', string='# Documents' ,store=True)
+    document_count = fields.Integer(compute='_document_count', string='# Documents' ,readonly=1 )
 
 
 class HrEmployeeAttachment(models.Model):

@@ -90,6 +90,7 @@ class res_partner(models.Model):
 	def _document_count(self):
 		for each in self:
 			document_ids = self.env['contact.document'].search([('document_holder', '=', each.id)])
+			print('==========+++++++++++++++++document count========',len(document_ids))
 			each.document_count = len(document_ids)
 
 	@api.multi
@@ -116,7 +117,7 @@ class res_partner(models.Model):
 		return res
 
 
-	document_count = fields.Integer(compute='_document_count', string='# Documents', store=True)
+	document_count = fields.Integer(compute='_document_count', readonly=1 ,string='# Documents')
 
 
 class CustomerAttachment(models.Model):
