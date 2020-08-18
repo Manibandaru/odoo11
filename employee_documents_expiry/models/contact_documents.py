@@ -56,7 +56,7 @@ class contact_documents(models.Model):
 				expire_days = (exp_date - date_now).days
 
 
-	@api.depends('days_expire')
+	@api.depends('days_expire','document_name')
 	@api.multi
 	def compute_notify(self):
 		for record in self:
