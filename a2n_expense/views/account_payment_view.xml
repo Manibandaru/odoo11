@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+     <record id ="group_voucher_unacess" model="res.groups">
+            <field name="name">Acess a2nsoft voucher</field>
+<!--            <field name="category_id" ref="module_category_fdd_report"/>-->
+        </record>
+    </data>
+
+    <record model="ir.ui.view" id="account_voucher.view_voucher_tree">
+            <field name="name">account.voucher.tree</field>
+            <field name="model">account.voucher</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="state == 'draft'" decoration-muted="state == 'cancel'" string="Voucher Entries">
+                    <field name="date"/>
+                    <field name="number"/>
+                    <field name="partner_id" string="Customer"/>
+                    <field name="voucher_type" invisible="context.get('visible', True)"/>
+                    <field name="amount" sum="Total Amount"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+          <!--  Purchase Vouchers -->
+        <record model="ir.ui.view" id="account_voucher.view_purchase_receipt_form">
+            <field name="name">account.voucher.purchase.form</field>
+            <field name="model">account.voucher</field>
+            <field name="arch" type="xml">
+                <form string="Expenses">
+                <header>
+                    <button name="proforma_voucher" string="Validate" states="draft" class="oe_highlight" type="object"/>
+                    <button name="cancel_voucher" string="Cancel" type="object" states="draft,proforma" />
+                    <button name="cancel_voucher" string="Cancel" type="object" states="posted" confirm="Are you sure you want to cancel this receipt?"/>
+                    <button name="action_cancel_draft" type="object" states="cancel" string="Set to Draft"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,posted"/>
+                </header>
+                <sheet string="Vendor Voucher">
+                    <label for="number" string="Expense Details"/>
+                    <h1>
+                        <field name="number" readonly="1"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="voucher_type" invisible="True"/>
+                            <field name="currency_id" invisible="True"/>
+                            <field name="partner_id" domain="[('supplier','=',True)]" string="Vendor" context="{'default_customer': 0, 'search_default_supplier': 1, 'default_supplier': 1}" />
+                            <field name="pay_now" required="1" invisible="1"/>
+                            <field name="payment_journal_id"
+                                   attrs="{'invisible': [('pay_now', '!=', 'pay_now')], 'required': [('pay_now', '=', 'pay_now')]}"/>
+                            <field name="account_id"  groups="account.group_account_user"/>
+                            <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                            <field name="reference"/>
+                        </group>
+                        <group>
+                            <field name="journal_id"
+
+                                   widget="selection"
+                                   groups="account.group_account_user"/>
+                            <field name="date" string="Bill Date"/>
+                            <field name="date_due" attrs="{'invisible': [('pay_now', '=', 'pay_now')]}"/>
+                            <field name="name" colspan="2" attrs="{'invisible': [('pay_now', '=', 'pay_later')]}"/>
+                            <field name="paid" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Bill Information">
+                            <field name="line_ids">
+                                <tree string="Voucher Lines" editable="bottom">
+                                    <field name="product_id" invisible="0"/>
+                                    <field name="name"/>
+                                    <field name="account_id" groups="account.group_account_user"/>
+                                    <field name="partner_id"/>
+                                    <field name="account_analytic_id" domain="[('company_id', '=', parent.company_id)]" groups="analytic.group_analytic_accounting" invisible="1"/>
+<!--                                    <field name="analytic_tag_ids" widget="many2many_tags" groups="analytic.group_analytic_tags"/>-->
+                                    <field name="quantity"/>
+                                    <field name="price_unit"/>
+                                    <field name="tax_ids" widget="many2many_tags" domain="[('type_tax_use','=','purchase')]"/>
+                                    <field name="price_subtotal"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="company_id" invisible="1"/>
+                                </tree>
+                            </field>
+                            <group>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="tax_amount"/>
+                                    <field name="tax_correction" attrs="{'invisible': [('tax_amount','=',0)]}"/>
+                                    <field name="amount"/>
+                                </group>
+                                <field name="narration" placeholder="Internal Notes" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="Journal Items" groups="account.group_account_user">
+                            <group>
+                                <field name="account_date"/>
+                                <field name="move_id" readonly="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+
+    <record id="account_voucher.action_purchase_receipt" model="ir.actions.act_window">
+            <field name="name">Expenses</field>
+
+            <field name="domain">[]</field>
+            <field name="context">{'default_voucher_type': 'purchase', 'voucher_type': 'purchase'}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Register a new Expense
+              </p><p>
+                When the Expense is confirmed, you can record the
+                vendor payment related to this Expense.
+              </p>
+            </field>
+        </record>
+
+
+    <menuitem id="account_voucher.menu_action_sale_receipt"
+            action="account_voucher.action_sale_receipt"
+            parent="account.menu_finance_receivables"
+            sequence="10" name="Voucher test" groups="a2n_expense.group_voucher_unacess"/>
+
+    <menuitem id="account_voucher.menu_action_purchase_receipt"
+            action="account_voucher.action_purchase_receipt" name="Book Expenses" parent="account.menu_finance_payables" sequence="10"/>
+
+
+     <record model="ir.ui.view" id="zic_account_payment_custom_view">
+        <field name="name">zic_account_payment_custom_view</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='journal_id']" position="after">
+                <field name="account_id"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
